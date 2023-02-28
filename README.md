@@ -24,4 +24,5 @@ Java Project for Space Tools for Simulation subject
 
 
 # Current status
-1. Hardcoded orbit, propagated with orekit, displayed with WorldWind
+1. Hardcoded orbit, propagated with PATRIUS, displayed with WorldWind
+2. GUI under development. Looking into whole orbit displayed.
