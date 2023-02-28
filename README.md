@@ -4,8 +4,8 @@ Java Project for Space Tools for Simulation subject
 # Ground Rules
 1. Use java 11
 2. Camel case convention:
-  1. ThisIsAClass
-  2. thisIsAVariable
+  i. ThisIsAClass
+  ii. thisIsAVariable
 3. Commits have to be self explainatory.
 4. Developments must be performed in branches.
 5. All classes must be commented before merging into main.
