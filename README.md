@@ -13,3 +13,7 @@ Java Project for Space Tools for Simulation subject
   - [ ] Orbit parameters from internet
   - [ ] Whole orbit displayed
   - [ ] Easter eggs
+
+
+# Current status
+1. Hardcoded orbit, propagated with orekit, displayed with WorldWind
