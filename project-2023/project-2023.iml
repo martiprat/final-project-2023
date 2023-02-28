@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/gdal.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/gluegen-rt.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/gluegen-rt-natives-linux-amd64.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/gluegen-rt-natives-macosx-universal.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/gluegen-rt-natives-windows-amd64.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/jogl-all.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/jogl-all-natives-linux-amd64.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/jogl-all-natives-macosx-universal.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/jogl-all-natives-windows-amd64.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/junit-4.5.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/patrius-4.8.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/vpf-symbols.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/worldwind.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../project-2022/lib/worldwindx.jar!/" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/../project-2022/src" expected_position="0" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="jdk" jdkName="JavaSE-11" jdkType="JavaSDK" />
+    <orderEntry type="module-library">
+      <library name="gdal.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/gdal.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="gluegen-rt.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/gluegen-rt.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="gluegen-rt-natives-linux-amd64.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/gluegen-rt-natives-linux-amd64.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="gluegen-rt-natives-macosx-universal.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/gluegen-rt-natives-macosx-universal.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="gluegen-rt-natives-windows-amd64.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/gluegen-rt-natives-windows-amd64.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jogl-all.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/jogl-all.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jogl-all-natives-linux-amd64.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/jogl-all-natives-linux-amd64.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jogl-all-natives-macosx-universal.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/jogl-all-natives-macosx-universal.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jogl-all-natives-windows-amd64.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/jogl-all-natives-windows-amd64.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="junit-4.5.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/junit-4.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="patrius-4.8.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/patrius-4.8.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/patrius-4.8.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="vpf-symbols.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/vpf-symbols.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="worldwind.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/worldwind.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/worldwind-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="worldwindx.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/worldwindx.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../project-2022/lib/worldwind-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
