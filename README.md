@@ -12,7 +12,7 @@ Java Project for Space Tools for Simulation subject
 
 # TO-DO list
 
-- [ ] Calculate orbit using PATRIUS (Martí)
+- [x] Calculate orbit using PATRIUS (Martí)
 - [x] Display this orbit around the earth (Martí)
 - [ ] USER Manual (Co-op)
 - [ ] Bonuses:
