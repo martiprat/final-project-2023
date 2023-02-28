@@ -32,7 +32,7 @@ import fr.cnes.sirius.patrius.utils.exception.PropagationException;
 public class TestingPropagation {
 
 
-    public static ArrayList<GeodeticPoint> main(String[] args) throws PatriusException, IOException, URISyntaxException {
+    public static ArrayList<GeodeticPoint> main(KeplerianOrbit myOrbit) throws PatriusException, IOException, URISyntaxException {
 		 
         // Patrius Dataset initialization (needed for example to get the UTC time)
         //PatriusDataset.addResourcesFromPatriusDataset() ;
@@ -48,14 +48,14 @@ public class TestingPropagation {
         final Frame GCRF = FramesFactory.getGCRF();
  
         // Initial orbit
-        final double sma = 7200.e+3;
-        final double exc = 0.01;
+        final double sma = myOrbit.a;
+        final double exc = myOrbit.e;
         final double per = sma*(1.-exc);
         final double apo = sma*(1.+exc);
-        final double inc = FastMath.toRadians(98.);
-        final double pa = FastMath.toRadians(0.);
-        final double raan = FastMath.toRadians(0.);
-        final double anm = FastMath.toRadians(0.);
+        final double inc = myOrbit.i;
+        final double pa = myOrbit.pa;
+        final double raan = myOrbit.raan;
+        final double anm = myOrbit.ta;
         final double MU = Constants.WGS84_EARTH_MU;
  
         final ApsisRadiusParameters par = new ApsisRadiusParameters(per, apo, inc, pa, raan, anm, PositionAngle.MEAN, MU);

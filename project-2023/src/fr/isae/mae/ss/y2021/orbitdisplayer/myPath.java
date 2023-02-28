@@ -78,7 +78,9 @@ public class myPath extends ApplicationTemplate {
         }
 
         public static void main(String[] args) throws PatriusException, IOException, URISyntaxException {
-            listOfStates =  TestingPropagation.main(null);
+            KeplerianOrbit myOrbit = GUI.main(null);
+
+            listOfStates =  TestingPropagation.main(myOrbit);
 
             ApplicationTemplate.start("WorldWind Paths", myPath.AppFrame.class);
 
