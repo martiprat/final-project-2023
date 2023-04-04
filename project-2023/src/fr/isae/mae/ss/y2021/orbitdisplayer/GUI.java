@@ -2,7 +2,6 @@ package fr.isae.mae.ss.y2021.orbitdisplayer;
 
 import fr.cnes.sirius.patrius.math.util.FastMath;
 import fr.cnes.sirius.patrius.utils.exception.PatriusException;
-import gov.nasa.worldwindx.examples.ApplicationTemplate;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -13,13 +12,23 @@ import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener {
 
-    private JButton leoButton, meoButton, geoButton, loadButton, saveButton;
-    private JTextField aField, eField, iField,
-            paField, raanField, anmField;
+    public final boolean closeGUI = false;
+    private final JButton leoButton;
+    private final JButton meoButton;
+    private final JButton geoButton;
+    private final JButton loadButton;
+    private final JButton showButton;
+    private final JTextField aField;
+    private final JTextField eField;
+    private final JTextField iField;
+    private final JTextField paField;
+    private final JTextField raanField;
+    private final JTextField anmField;
+    private final JTextField dtField;
 
     public GUI() {
         // Set up the window
-        setTitle("Keplerian Orbit");
+        setTitle("Track my Sat");
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -41,7 +50,7 @@ public class GUI extends JFrame implements ActionListener {
         add(buttonPanel, BorderLayout.NORTH);
 
         // Create the text boxes
-        JPanel inputPanel = new JPanel(new GridLayout(6, 2));
+        JPanel inputPanel = new JPanel(new GridLayout(7, 2));
         inputPanel.add(new JLabel("Semi-Major Axis (km):"));
         aField = new JTextField("7200");
         inputPanel.add(aField);
@@ -66,6 +75,10 @@ public class GUI extends JFrame implements ActionListener {
         anmField = new JTextField("0");
         inputPanel.add(anmField);
 
+        inputPanel.add(new JLabel("Propagation time (min):"));
+        dtField = new JTextField("20");
+        inputPanel.add(dtField);
+
         add(inputPanel, BorderLayout.CENTER);
 
         JPanel buttonPanel2 = new JPanel(new GridLayout(1, 2));
@@ -76,9 +89,9 @@ public class GUI extends JFrame implements ActionListener {
         buttonPanel2.add(loadButton);
 
         // Save the data from the orbit
-        saveButton = new JButton("Save");
-        saveButton.addActionListener(this);
-        buttonPanel2.add(saveButton);
+        showButton = new JButton("Show");
+        showButton.addActionListener(this);
+        buttonPanel2.add(showButton);
 
         add(buttonPanel2, BorderLayout.SOUTH);
 
@@ -87,35 +100,35 @@ public class GUI extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == leoButton) {
-            // Do something when button1 is clicked
+            // when LEO button is clicked, it gets the parameters for a LEO orbit and set them on the text boxes
             KeplerianOrbit myOrbit = fillParameters("LEO");
             setTextFieldValues(myOrbit);
         } else if (e.getSource() == meoButton) {
-            // Do something when button2 is clicked
+            // when MEO button is clicked, it gets the parameters for a MEO orbit and set them on the text boxes
             KeplerianOrbit myOrbit = fillParameters("MEO");
             setTextFieldValues(myOrbit);
         } else if (e.getSource() == geoButton) {
-            // Do something when button3 is clicked
+            // when GEO button is clicked, it gets the parameters for a GEO orbit and set them on the text boxes
             KeplerianOrbit myOrbit = fillParameters("GEO");
             setTextFieldValues(myOrbit);
         }
-        if (e.getSource() == saveButton) {
-            // Do something when button2 is clicked
-            KeplerianOrbit myOrbit = getOrbit();
+        if (e.getSource() == showButton) {
+            // When the show button is clicked, the orbit is recovered from the text boxes and the visual
+            // environment is opened to show the orbit corresponding to the given parameters.
+            KeplerianOrbit myOrbit = createOrbit();
             try {
                 myPath.AppFrame.plotOrbit(myOrbit);
-            } catch (PatriusException ex) {
-                throw new RuntimeException(ex);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            } catch (URISyntaxException ex) {
+            } catch (PatriusException | IOException | URISyntaxException ex) {
                 throw new RuntimeException(ex);
             }
+            if (this.closeGUI){dispose();}
+
         }
+
     }
 
     private KeplerianOrbit fillParameters(String message) {
-        double a = 0.0, e = 0.0, i = 0.0, pa = 0.0, raan = 0.0, anm = 0.0;
+        double a = 0.0, e = 0.0, i = 0.0, pa = 0.0, raan = 0.0, anm = 0.0, dt=0.0;
         switch(message) {
             case "LEO":
                 a = 7200.e3;
@@ -124,6 +137,7 @@ public class GUI extends JFrame implements ActionListener {
                 pa = FastMath.toRadians(0.);
                 raan = FastMath.toRadians(0.);
                 anm = FastMath.toRadians(0.);
+                dt = 20;
                 break;
             case "MEO":
                 a = 20000.e3;
@@ -132,6 +146,7 @@ public class GUI extends JFrame implements ActionListener {
                 pa = FastMath.toRadians(0.);
                 raan = FastMath.toRadians(0.);
                 anm = FastMath.toRadians(0.);
+                dt = 120;
                 break;
             case "GEO":
                 a = 42000.e3;
@@ -140,22 +155,24 @@ public class GUI extends JFrame implements ActionListener {
                 pa = FastMath.toRadians(0.);
                 raan = FastMath.toRadians(0.);
                 anm = FastMath.toRadians(0.);
+                dt = 300;
                 break;
         }
-        return new KeplerianOrbit(a, e, i, pa, raan, anm);
+        return new KeplerianOrbit(a, e, i, pa, raan, anm, dt);
     }
 
-    private KeplerianOrbit getOrbit() {
+    private KeplerianOrbit createOrbit() {
         // Get the input values from the text fields
-        double a = Double.parseDouble(aField.getText())*1000;
+        double a = Double.parseDouble(aField.getText())*1000; // Conversion to meters
         double e = Double.parseDouble(eField.getText());
         double i = FastMath.toRadians(Double.parseDouble(iField.getText()));
         double pa = Double.parseDouble(paField.getText());
         double raan = Double.parseDouble(raanField.getText());
         double anm = Double.parseDouble(anmField.getText());
+        double dt = Double.parseDouble(dtField.getText())*60; // Value in seconds for computation
 
         // Create the KeplerianOrbit object
-        return new KeplerianOrbit(a, e, i, pa, raan, anm);
+        return new KeplerianOrbit(a, e, i, pa, raan, anm, dt);
     }
     private void setTextFieldValues(KeplerianOrbit orbit) {
         aField.setText(Double.toString(orbit.getA()/1000));
@@ -164,14 +181,10 @@ public class GUI extends JFrame implements ActionListener {
         paField.setText(Double.toString(orbit.getPerigeeArgument()));
         raanField.setText(Double.toString(orbit.getRightAscensionOfAscendingNode()));
         anmField.setText(Double.toString(orbit.getAnomaly()));
-    }
-    public static KeplerianOrbit openGUI() {
-        GUI gui = new GUI();
-        KeplerianOrbit orbit = gui.getOrbit();
-        return orbit;
+        dtField.setText(Double.toString(orbit.getDt()));
     }
 
     public static void main(String[] Args) throws PatriusException, IOException, URISyntaxException {
-        GUI gui = new GUI();
+        new GUI();
     }
 }

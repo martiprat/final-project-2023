@@ -1,14 +1,16 @@
 package fr.isae.mae.ss.y2021.orbitdisplayer;
 
 public class KeplerianOrbit {
-    public double a;
-    public double e;
-    public double i;
-    public double pa;
-    public double raan;
-    public double ta;
+    private double a;
+    private double e;
+    private double i;
+    private double pa;
+    private double raan;
+    private double ta;
+    private double dt;
+
     public KeplerianOrbit(double semiMajorAxis, double eccentricity, double inclination, double perigeeArgument,
-                            double rAAN, double trueAnomaly) {
+                            double rAAN, double trueAnomaly, double dt) {
 
         this.a = semiMajorAxis;
         this.e = eccentricity;
@@ -16,16 +18,15 @@ public class KeplerianOrbit {
         this.pa = perigeeArgument;
         this.raan = rAAN;
         this.ta = trueAnomaly;
+        this.dt = dt;
     }
 
     public double getA() {
         return a;
     }
-
     public double getE() {
         return e;
     }
-
     public double getI() {
         return i;
     }
@@ -40,5 +41,9 @@ public class KeplerianOrbit {
 
     public double getAnomaly() {
         return ta;
+    }
+
+    public double getDt() {
+        return dt;
     }
 }

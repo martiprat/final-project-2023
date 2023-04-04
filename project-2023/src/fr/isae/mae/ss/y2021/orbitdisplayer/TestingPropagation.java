@@ -48,14 +48,15 @@ public class TestingPropagation {
         final Frame GCRF = FramesFactory.getGCRF();
  
         // Initial orbit
-        final double sma = myOrbit.a;
-        final double exc = myOrbit.e;
+        final double sma = myOrbit.getA();
+        final double exc = myOrbit.getE();
         final double per = sma*(1.-exc);
         final double apo = sma*(1.+exc);
-        final double inc = myOrbit.i;
-        final double pa = myOrbit.pa;
-        final double raan = myOrbit.raan;
-        final double anm = myOrbit.ta;
+        final double inc = myOrbit.getI();
+        final double pa = myOrbit.getPerigeeArgument();
+        final double raan = myOrbit.getRightAscensionOfAscendingNode();
+        final double anm = myOrbit.getAnomaly();
+        final double dt = myOrbit.getDt();
         final double MU = Constants.WGS84_EARTH_MU;
  
         final ApsisRadiusParameters par = new ApsisRadiusParameters(per, apo, inc, pa, raan, anm, PositionAngle.MEAN, MU);
@@ -112,8 +113,7 @@ public class TestingPropagation {
         propagator.setMasterMode(10., myStepHandler);
 //SPECIFIC
  
-        // Propagating 100s
-        final double dt = 1000;
+        // Propagating
         final AbsoluteDate finalDate = date.shiftedBy(dt);
         final SpacecraftState finalState = propagator.propagate(finalDate);
  
