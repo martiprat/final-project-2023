@@ -37,14 +37,14 @@ public class TestingPropagation {
         // Patrius Dataset initialization (needed for example to get the UTC time)
         //PatriusDataset.addResourcesFromPatriusDataset() ;
  
-        // Recovery of the UTC time scale using a "factory" (not to duplicate such unique object)
+        // Recovery of the UTC timescale using a "factory" (not to duplicate such unique object)
         final TimeScale TAI = TimeScalesFactory.getTAI();
  
-        // Date of the orbit given in UTC time scale)
+        // Date of the orbit given in UTC timescale)
         final AbsoluteDate date = new AbsoluteDate("2010-01-01T12:00:00.000", TAI);
  
-        // Getting the frame with wich will defined the orbit parameters
-        // As for time scale, we will use also a "factory".
+        // Getting the frame with which will define the orbit parameters
+        // As for timescale, we will use also a "factory".
         final Frame GCRF = FramesFactory.getGCRF();
  
         // Initial orbit
@@ -61,7 +61,7 @@ public class TestingPropagation {
         final ApsisRadiusParameters par = new ApsisRadiusParameters(per, apo, inc, pa, raan, anm, PositionAngle.MEAN, MU);
         final Orbit iniOrbit = new ApsisOrbit(par, GCRF, date);
  
-        // We create a spacecratftstate
+        // We create a spacecraft state
         final SpacecraftState iniState = new SpacecraftState(iniOrbit);
  
         // Initialization of the Runge Kutta integrator with a 2 s step

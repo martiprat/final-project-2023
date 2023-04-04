@@ -17,4 +17,28 @@ public class KeplerianOrbit {
         this.raan = rAAN;
         this.ta = trueAnomaly;
     }
+
+    public double getA() {
+        return a;
+    }
+
+    public double getE() {
+        return e;
+    }
+
+    public double getI() {
+        return i;
+    }
+
+    public double getPerigeeArgument() {
+        return pa;
+    }
+
+    public double getRightAscensionOfAscendingNode() {
+        return raan;
+    }
+
+    public double getAnomaly() {
+        return ta;
+    }
 }
