@@ -37,31 +37,32 @@ public class TestingPropagation {
         // Patrius Dataset initialization (needed for example to get the UTC time)
         //PatriusDataset.addResourcesFromPatriusDataset() ;
  
-        // Recovery of the UTC time scale using a "factory" (not to duplicate such unique object)
+        // Recovery of the UTC timescale using a "factory" (not to duplicate such unique object)
         final TimeScale TAI = TimeScalesFactory.getTAI();
  
-        // Date of the orbit given in UTC time scale)
+        // Date of the orbit given in UTC timescale)
         final AbsoluteDate date = new AbsoluteDate("2010-01-01T12:00:00.000", TAI);
  
-        // Getting the frame with wich will defined the orbit parameters
-        // As for time scale, we will use also a "factory".
+        // Getting the frame with which will define the orbit parameters
+        // As for timescale, we will use also a "factory".
         final Frame GCRF = FramesFactory.getGCRF();
  
         // Initial orbit
-        final double sma = myOrbit.a;
-        final double exc = myOrbit.e;
+        final double sma = myOrbit.getA();
+        final double exc = myOrbit.getE();
         final double per = sma*(1.-exc);
         final double apo = sma*(1.+exc);
-        final double inc = myOrbit.i;
-        final double pa = myOrbit.pa;
-        final double raan = myOrbit.raan;
-        final double anm = myOrbit.ta;
+        final double inc = myOrbit.getI();
+        final double pa = myOrbit.getPerigeeArgument();
+        final double raan = myOrbit.getRightAscensionOfAscendingNode();
+        final double anm = myOrbit.getAnomaly();
+        final double dt = myOrbit.getDt();
         final double MU = Constants.WGS84_EARTH_MU;
  
         final ApsisRadiusParameters par = new ApsisRadiusParameters(per, apo, inc, pa, raan, anm, PositionAngle.MEAN, MU);
         final Orbit iniOrbit = new ApsisOrbit(par, GCRF, date);
  
-        // We create a spacecratftstate
+        // We create a spacecraft state
         final SpacecraftState iniState = new SpacecraftState(iniOrbit);
  
         // Initialization of the Runge Kutta integrator with a 2 s step
@@ -112,8 +113,7 @@ public class TestingPropagation {
         propagator.setMasterMode(10., myStepHandler);
 //SPECIFIC
  
-        // Propagating 100s
-        final double dt = 1000;
+        // Propagating
         final AbsoluteDate finalDate = date.shiftedBy(dt);
         final SpacecraftState finalState = propagator.propagate(finalDate);
  

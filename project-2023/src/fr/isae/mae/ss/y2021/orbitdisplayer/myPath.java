@@ -1,6 +1,8 @@
 package fr.isae.mae.ss.y2021.orbitdisplayer;
 
 import fr.cnes.sirius.patrius.bodies.GeodeticPoint;
+import fr.cnes.sirius.patrius.math.util.FastMath;
+import fr.cnes.sirius.patrius.orbits.Orbit;
 import fr.cnes.sirius.patrius.utils.exception.PatriusException;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
@@ -91,11 +93,9 @@ public class myPath extends ApplicationTemplate {
             showtime();
         }
 
-        public static void main(String[] args) throws PatriusException, IOException, URISyntaxException {
-            KeplerianOrbit myOrbit = GUI.main(null);
+        public static void plotOrbit(KeplerianOrbit myOrbit) throws PatriusException, IOException, URISyntaxException {
 
             listOfStates =  TestingPropagation.main(myOrbit);
-
             ApplicationTemplate.start("WorldWind Paths", myPath.AppFrame.class);
 
         }
