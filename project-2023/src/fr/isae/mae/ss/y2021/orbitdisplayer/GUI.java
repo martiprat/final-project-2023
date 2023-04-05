@@ -137,6 +137,7 @@ public class GUI extends JFrame implements ActionListener {
             final double RAAN = Double.parseDouble(RAANT);
             final double argPerigee = Double.parseDouble(argPerigeeT);
             final double MeanAnom = Double.parseDouble(MeanAnomT);
+            final double dt = 20;
 
             // Convert values to radians
             final double i = FastMath.toRadians(inc);
@@ -145,7 +146,7 @@ public class GUI extends JFrame implements ActionListener {
             final double anm = FastMath.toRadians(MeanAnom);
 
             // Create a new KeplerianOrbit object using the parsed data
-            return new KeplerianOrbit(a, e, i, pa, raan, anm);
+            return new KeplerianOrbit(a, e, i, pa, raan, anm,dt);
 
         } catch (IOException e) {
             // Print the stack trace if an IOException occurs
@@ -168,6 +169,10 @@ public class GUI extends JFrame implements ActionListener {
         } else if (e.getSource() == geoButton) {
             // when GEO button is clicked, it gets the parameters for a GEO orbit and set them on the text boxes
             KeplerianOrbit myOrbit = fillParameters("GEO");
+            setTextFieldValues(myOrbit);
+        } else if (e.getSource() == loadButton) {
+            // when GEO button is clicked, it gets the parameters for a GEO orbit and set them on the text boxes
+            KeplerianOrbit myOrbit = fillParameters("Load");
             setTextFieldValues(myOrbit);
         }
         if (e.getSource() == showButton) {
@@ -196,7 +201,8 @@ public class GUI extends JFrame implements ActionListener {
                 raan = FastMath.toRadians(0.);
                 anm = FastMath.toRadians(0.);
                 dt = 20;
-                break;
+                return new KeplerianOrbit(a, e, i, pa, raan, anm, dt);
+                //break;
             case "MEO":
                 a = 20000.e3;
                 e = 0.05;
@@ -205,7 +211,8 @@ public class GUI extends JFrame implements ActionListener {
                 raan = FastMath.toRadians(0.);
                 anm = FastMath.toRadians(0.);
                 dt = 120;
-                break;
+                return new KeplerianOrbit(a, e, i, pa, raan, anm, dt);
+                //break;
             case "GEO":
                 a = 42000.e3;
                 e = 0.0;
@@ -214,13 +221,17 @@ public class GUI extends JFrame implements ActionListener {
                 raan = FastMath.toRadians(0.);
                 anm = FastMath.toRadians(0.);
                 dt = 300;
-                break;
+                return new KeplerianOrbit(a, e, i, pa, raan, anm, dt);
+                //break;
+            case "Load":
+                KeplerianOrbit orbitFromInternet = getInfoFromInternet();
+                return orbitFromInternet;
+                //break;
+            default:
+                return new KeplerianOrbit(a, e, i, pa, raan, anm, dt);
         }
-        // If information is taken from Internet
-        //KeplerianOrbit orbitFromInternet = getInfoFromInternet();
-        //return orbitFromInternet;
 
-        return new KeplerianOrbit(a, e, i, pa, raan, anm, dt);
+
     }
 
     private KeplerianOrbit createOrbit() {
