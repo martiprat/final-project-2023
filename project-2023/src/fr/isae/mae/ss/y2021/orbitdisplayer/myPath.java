@@ -4,6 +4,7 @@ import fr.cnes.sirius.patrius.bodies.GeodeticPoint;
 import fr.cnes.sirius.patrius.math.util.FastMath;
 import fr.cnes.sirius.patrius.orbits.Orbit;
 import fr.cnes.sirius.patrius.utils.exception.PatriusException;
+import gov.nasa.worldwind.View;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
 import gov.nasa.worldwind.geom.Position;
@@ -30,6 +31,14 @@ public class myPath extends ApplicationTemplate {
     public static class AppFrame extends ApplicationTemplate.AppFrame {
 
         private static ArrayList<GeodeticPoint> listOfStates;
+
+        private void setZoom(GeodeticPoint firstState, View view){
+            double lat = firstState.getLatitude()*180/3.1415;
+            double lon = firstState.getLongitude()*180/3.1415;
+            double alt = firstState.getAltitude();
+            double zoomAlt = 2 * alt + 10000000;
+            view.setEyePosition(Position.fromDegrees (lat, lon, zoomAlt));
+        }
 
         /**
 
@@ -76,6 +85,10 @@ public class myPath extends ApplicationTemplate {
             // Insert the marker layer and the renderable layer before the compass in the WorldWind window
             insertBeforeCompass(getWwd(), layer);
             insertBeforeCompass(getWwd(), markerLayer);
+
+            // Set the zoom
+            int mid_length = (int)listOfStates.size()/2;
+            this.setZoom(listOfStates.get(mid_length), getWwd().getView());
         }
 
         private ArrayList<Position> geo2pos(ArrayList<GeodeticPoint> listOfStates) {
