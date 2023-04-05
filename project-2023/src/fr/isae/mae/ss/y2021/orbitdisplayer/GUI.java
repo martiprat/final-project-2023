@@ -188,6 +188,13 @@ public class GUI extends JFrame implements ActionListener {
 
         }
 
+        if (e.getSource() == loadButton) {
+            // When the load button is clicked, we should download data from the internet
+            // and put it inside the text boxes
+            KeplerianOrbit myOrbit = fillParameters("GEO");
+            setTextFieldValues(myOrbit);
+        }
+
     }
 
     private KeplerianOrbit fillParameters(String message) {

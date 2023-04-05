@@ -4,6 +4,7 @@ import fr.cnes.sirius.patrius.bodies.GeodeticPoint;
 import fr.cnes.sirius.patrius.math.util.FastMath;
 import fr.cnes.sirius.patrius.orbits.Orbit;
 import fr.cnes.sirius.patrius.utils.exception.PatriusException;
+import gov.nasa.worldwind.View;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
 import gov.nasa.worldwind.geom.Position;
@@ -30,6 +31,14 @@ public class myPath extends ApplicationTemplate {
     public static class AppFrame extends ApplicationTemplate.AppFrame {
 
         private static ArrayList<GeodeticPoint> listOfStates;
+
+        private void setZoom(GeodeticPoint state, View view){
+            double lat = FastMath.toDegrees(state.getLatitude());
+            double lon = FastMath.toDegrees(state.getLongitude());
+            double alt = state.getAltitude();
+            double zoomAlt = 2 * alt + 10000000;
+            view.setEyePosition(Position.fromDegrees (lat, lon, zoomAlt));
+        }
 
         /**
 
@@ -58,23 +67,19 @@ public class myPath extends ApplicationTemplate {
             // Set the path's attributes
             path.setAttributes(attrs);
             path.setVisible(true);
+            path.setDragEnabled(false);
             path.setAltitudeMode(WorldWind.RELATIVE_TO_GROUND);
             path.setPathType(AVKey.GREAT_CIRCLE);
 
             // Add the path to the renderable layer
             layer.addRenderable(path);
 
-            // Create a list of markers and add a single marker at position (90, 0)
-            List<Marker> markers = new ArrayList<>(1);
-            markers.add(new BasicMarker(Position.fromDegrees(90, 0), new BasicMarkerAttributes()));
-
-            // Create a marker layer and set its markers to the list of markers
-            MarkerLayer markerLayer = new MarkerLayer();
-            markerLayer.setMarkers(markers);
-
-            // Insert the marker layer and the renderable layer before the compass in the WorldWind window
+            // Insert the renderable layer before the compass in the WorldWind window
             insertBeforeCompass(getWwd(), layer);
-            insertBeforeCompass(getWwd(), markerLayer);
+
+            // Set the zoom
+            int mid_length = (int)listOfStates.size()/2;
+            this.setZoom(listOfStates.get(mid_length), getWwd().getView());
         }
 
         private ArrayList<Position> geo2pos(ArrayList<GeodeticPoint> listOfStates) {
