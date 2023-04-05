@@ -58,6 +58,7 @@ public class myPath extends ApplicationTemplate {
             // Set the path's attributes
             path.setAttributes(attrs);
             path.setVisible(true);
+            path.setDragEnabled(false);
             path.setAltitudeMode(WorldWind.RELATIVE_TO_GROUND);
             path.setPathType(AVKey.GREAT_CIRCLE);
 
