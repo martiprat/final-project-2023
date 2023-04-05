@@ -32,10 +32,10 @@ public class myPath extends ApplicationTemplate {
 
         private static ArrayList<GeodeticPoint> listOfStates;
 
-        private void setZoom(GeodeticPoint firstState, View view){
-            double lat = firstState.getLatitude()*180/3.1415;
-            double lon = firstState.getLongitude()*180/3.1415;
-            double alt = firstState.getAltitude();
+        private void setZoom(GeodeticPoint state, View view){
+            double lat = FastMath.toDegrees(state.getLatitude());
+            double lon = FastMath.toDegrees(state.getLongitude());
+            double alt = state.getAltitude();
             double zoomAlt = 2 * alt + 10000000;
             view.setEyePosition(Position.fromDegrees (lat, lon, zoomAlt));
         }
