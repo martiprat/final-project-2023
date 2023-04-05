@@ -74,17 +74,8 @@ public class myPath extends ApplicationTemplate {
             // Add the path to the renderable layer
             layer.addRenderable(path);
 
-            // Create a list of markers and add a single marker at position (90, 0)
-            List<Marker> markers = new ArrayList<>(1);
-            markers.add(new BasicMarker(Position.fromDegrees(90, 0), new BasicMarkerAttributes()));
-
-            // Create a marker layer and set its markers to the list of markers
-            MarkerLayer markerLayer = new MarkerLayer();
-            markerLayer.setMarkers(markers);
-
-            // Insert the marker layer and the renderable layer before the compass in the WorldWind window
+            // Insert the renderable layer before the compass in the WorldWind window
             insertBeforeCompass(getWwd(), layer);
-            insertBeforeCompass(getWwd(), markerLayer);
 
             // Set the zoom
             int mid_length = (int)listOfStates.size()/2;
