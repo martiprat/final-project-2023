@@ -10,8 +10,6 @@ import java.net.URISyntaxException;
 import javax.swing.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 import java.util.Objects;
 
 

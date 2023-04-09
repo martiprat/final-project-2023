@@ -2,30 +2,23 @@ package fr.isae.mae.ss.y2021.orbitdisplayer;
 
 import fr.cnes.sirius.patrius.bodies.GeodeticPoint;
 import fr.cnes.sirius.patrius.math.util.FastMath;
-import fr.cnes.sirius.patrius.orbits.Orbit;
 import fr.cnes.sirius.patrius.utils.exception.PatriusException;
 import gov.nasa.worldwind.View;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
 import gov.nasa.worldwind.geom.Position;
-import gov.nasa.worldwind.layers.MarkerLayer;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.BasicShapeAttributes;
 import gov.nasa.worldwind.render.Material;
 import gov.nasa.worldwind.render.Path;
 import gov.nasa.worldwind.render.ShapeAttributes;
-import gov.nasa.worldwind.render.markers.BasicMarker;
-import gov.nasa.worldwind.render.markers.BasicMarkerAttributes;
-import gov.nasa.worldwind.render.markers.Marker;
 import gov.nasa.worldwind.util.BasicDragger;
 import gov.nasa.worldwindx.examples.ApplicationTemplate;
-import gov.nasa.worldwindx.examples.Paths;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class myPath extends ApplicationTemplate {
     public static class AppFrame extends ApplicationTemplate.AppFrame {

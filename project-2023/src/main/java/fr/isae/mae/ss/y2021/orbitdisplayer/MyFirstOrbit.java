@@ -1,16 +1,9 @@
 package fr.isae.mae.ss.y2021.orbitdisplayer;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-
 import fr.cnes.sirius.patrius.bodies.BodyShape;
 import fr.cnes.sirius.patrius.bodies.GeodeticPoint;
 import fr.cnes.sirius.patrius.bodies.OneAxisEllipsoid;
 import fr.cnes.sirius.patrius.frames.Frame;
 import fr.cnes.sirius.patrius.frames.FramesFactory;
-import fr.cnes.sirius.patrius.frames.transformations.Transform;
-import fr.cnes.sirius.patrius.math.geometry.euclidean.threed.Vector3D;
 import fr.cnes.sirius.patrius.math.ode.FirstOrderIntegrator;
 import fr.cnes.sirius.patrius.math.ode.nonstiff.ClassicalRungeKuttaIntegrator;
 import fr.cnes.sirius.patrius.math.util.FastMath;
