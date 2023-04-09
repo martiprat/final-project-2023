@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="project-2022-yournamehere" />
+        <module name="project-2023-MontolioPratRodriguez" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="project-2022-yournamehere" target="11" />
+      <module name="project-2023-MontolioPratRodriguez" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
