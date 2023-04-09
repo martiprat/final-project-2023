@@ -35,11 +35,9 @@ public class myPath extends ApplicationTemplate {
 
         /**
 
-         Displays a path with specified attributes and enables shape dragging.
-
-         Adds a marker layer with a single marker at position (90, 0).
+         Displays a path with specified attributes and sets required zoom.
          */
-        public void showtime() {
+        public void displayPathWithMarkersAndZoom() {
 
             // Add a dragger to enable shape dragging
             getWwd().addSelectListener(new BasicDragger(getWwd()));
@@ -88,7 +86,7 @@ public class myPath extends ApplicationTemplate {
         public AppFrame() {
             super(true, true, false);
 
-            showtime();
+            displayPathWithMarkersAndZoom();
         }
 
         public static void plotOrbit(KeplerianOrbit myOrbit) throws PatriusException, IOException, URISyntaxException {
