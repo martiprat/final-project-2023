@@ -37,6 +37,7 @@ public class GUI extends JFrame implements ActionListener {
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        setResizable(false);
 
         // Create the buttons
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
