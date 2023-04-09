@@ -29,8 +29,7 @@ import fr.cnes.sirius.patrius.utils.Constants;
 import fr.cnes.sirius.patrius.utils.exception.PatriusException;
 import fr.cnes.sirius.patrius.utils.exception.PropagationException;
 
-public class TestingPropagation {
-
+public class PropagateOrbit {
 
     public static ArrayList<GeodeticPoint> main(KeplerianOrbit myOrbit) throws PatriusException, IOException, URISyntaxException {
 		 
