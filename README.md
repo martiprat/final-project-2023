@@ -17,9 +17,9 @@ Java Project for Space Tools for Simulation subject
 - [ ] USER Manual (Co-op)
 - [ ] Bonuses:
   - [ ] Real orbit taking into account earth's configuration
-  - [ ] Orbit from config file or GUI
-  - [ ] Orbit parameters from internet
-  - [ ] Whole orbit displayed
+  - [x] Orbit from config file or GUI (Isabel)
+  - [x] Orbit parameters from internet (Albert)
+  - [x] Whole orbit displayed (Martí)
   - [ ] Easter eggs
 
 
