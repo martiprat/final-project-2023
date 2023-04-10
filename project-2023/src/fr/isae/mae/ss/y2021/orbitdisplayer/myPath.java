@@ -32,17 +32,6 @@ import java.util.List;
 
 public class myPath extends ApplicationTemplate {
 
-    public static class ExtendedAppPanel extends AppPanel {
-
-        public ExtendedAppPanel(Dimension canvasSize, boolean includeStatusBar) {
-            super(canvasSize, includeStatusBar);
-
-            
-
-        }
-
-    }
-
     public static class AppFrame extends ApplicationTemplate.AppFrame {
 
         private static ArrayList<GeodeticPoint> listOfStates;
@@ -87,64 +76,6 @@ public class myPath extends ApplicationTemplate {
             }
 
             return pathPositions;
-        }
-
-        protected ExtendedAppPanel myCreateAppPanel(Dimension canvasSize, boolean includeStatusBar) {
-            return new ExtendedAppPanel(canvasSize, includeStatusBar);
-        }
-
-        protected void initialize(boolean includeStatusBar, boolean includeLayerPanel, boolean includeStatsPanel) {
-            // Create the WorldWindow.
-            this.wwjPanel = this.myCreateAppPanel(this.getCanvasSize(), includeStatusBar);
-            this.wwjPanel.setPreferredSize(this.getCanvasSize());
-
-            // Put the pieces together.
-            this.getContentPane().add(wwjPanel, BorderLayout.CENTER);
-            if (includeLayerPanel) {
-                this.controlPanel = new JPanel(new BorderLayout(10, 10));
-                this.layerPanel = new LayerPanel(this.getWwd());
-                this.controlPanel.add(this.layerPanel, BorderLayout.CENTER);
-                this.controlPanel.add(new FlatWorldPanel(this.getWwd()), BorderLayout.NORTH);
-                this.getContentPane().add(this.controlPanel, BorderLayout.WEST);
-            }
-
-            if (includeStatsPanel || System.getProperty("gov.nasa.worldwind.showStatistics") != null) {
-                this.statsPanel = new StatisticsPanel(this.wwjPanel.getWwd(), new Dimension(250, this.getCanvasSize().height));
-                this.getContentPane().add(this.statsPanel, BorderLayout.EAST);
-            }
-
-            // Create and install the view controls layer and register a controller for it with the WorldWindow.
-            ViewControlsLayer viewControlsLayer = new ViewControlsLayer();
-            insertBeforeCompass(getWwd(), viewControlsLayer);
-            this.getWwd().addSelectListener(new ViewControlsSelectListener(this.getWwd(), viewControlsLayer));
-
-            // Register a rendering exception listener that's notified when exceptions occur during rendering.
-            this.wwjPanel.getWwd().addRenderingExceptionListener((Throwable t) -> {
-                if (t instanceof WWAbsentRequirementException) {
-                    String message = "Computer does not meet minimum graphics requirements.\n";
-                    message += "Please install up-to-date graphics driver and try again.\n";
-                    message += "Reason: " + t.getMessage() + "\n";
-                    message += "This program will end when you press OK.";
-
-                    JOptionPane.showMessageDialog(this, message, "Unable to Start Program",
-                            JOptionPane.ERROR_MESSAGE);
-                    System.exit(-1);
-                }
-            });
-
-            // Search the layer list for layers that are also select listeners and register them with the World
-            // Window. This enables interactive layers to be included without specific knowledge of them here.
-            for (Layer layer : this.wwjPanel.getWwd().getModel().getLayers()) {
-                if (layer instanceof SelectListener) {
-                    this.getWwd().addSelectListener((SelectListener) layer);
-                }
-            }
-
-            this.pack();
-
-            // Center the application on the screen.
-            WWUtil.alignComponent(null, this, AVKey.CENTER);
-            this.setResizable(true);
         }
 
         public AppFrame() {
