@@ -25,6 +25,11 @@ public class myPath extends ApplicationTemplate {
 
         private static ArrayList<GeodeticPoint> listOfStates;
 
+        /**
+         * Sets zoom of worldview according to given point
+         * @param state Current state (lat, lon, alt)
+         * @param view View object of worldview
+         */
         private void setZoom(GeodeticPoint state, View view){
             double lat = FastMath.toDegrees(state.getLatitude());
             double lon = FastMath.toDegrees(state.getLongitude());
@@ -75,6 +80,11 @@ public class myPath extends ApplicationTemplate {
             this.setZoom(listOfStates.get(mid_length), getWwd().getView());
         }
 
+        /**
+         * Convert array of GeodeticPoint into array of pathPositions
+         * @param listOfStates GeodeticPoint array
+         * @return pathPositions array
+         */
         private ArrayList<Position> geo2pos(ArrayList<GeodeticPoint> listOfStates) {
             ArrayList<Position> pathPositions = new ArrayList<>();
 
