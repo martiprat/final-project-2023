@@ -38,6 +38,8 @@ public class myPath extends ApplicationTemplate {
          Displays a path with specified attributes and sets required zoom.
          */
         public void displayPathWithMarkersAndZoom() {
+            // Set View to CustomOrbitView to see full orbit
+            getWwd().setView(new CustomOrbitView());
 
             // Add a dragger to enable shape dragging
             getWwd().addSelectListener(new BasicDragger(getWwd()));
