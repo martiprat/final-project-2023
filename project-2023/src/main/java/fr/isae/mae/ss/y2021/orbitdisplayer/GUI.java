@@ -5,6 +5,7 @@ import fr.cnes.sirius.patrius.utils.exception.PatriusException;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import javax.swing.*;
@@ -36,6 +37,10 @@ public class GUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setResizable(false);
+
+        // Set the icon on the taskbar
+        Image icon = Toolkit.getDefaultToolkit().getImage("project-2023/Images/track.png");
+        setIconImage(icon);
 
         // Create the buttons
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
