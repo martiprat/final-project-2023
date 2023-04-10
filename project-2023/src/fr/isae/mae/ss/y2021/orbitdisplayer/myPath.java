@@ -37,6 +37,8 @@ public class myPath extends ApplicationTemplate {
         private static ArrayList<GeodeticPoint> listOfStates;
 
         public void showtime() {
+            // Redefine OrbitView to view full orbit
+            getWwd().setView(new CustomOrbitView());
 
             // Add a dragger to enable shape dragging
             getWwd().addSelectListener(new BasicDragger(getWwd()));
