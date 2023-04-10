@@ -14,15 +14,10 @@ Java Project for Space Tools for Simulation subject
 
 - [x] Calculate orbit using PATRIUS (Martí)
 - [x] Display this orbit around the earth (Martí)
-- [ ] USER Manual (Co-op)
+- [x] USER Manual (Co-op)
 - [ ] Bonuses:
   - [ ] Real orbit taking into account earth's configuration
   - [x] Orbit from config file or GUI (Isabel)
   - [x] Orbit parameters from internet (Albert)
   - [x] Whole orbit displayed (Martí)
   - [ ] Easter eggs
-
-
-# Current status
-1. Hardcoded orbit, propagated with PATRIUS, displayed with WorldWind
-2. GUI under development. Looking into whole orbit displayed.
